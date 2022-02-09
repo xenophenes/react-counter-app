@@ -1,28 +1,41 @@
-import React, { Component } from 'react';
-import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <Counter />
-      </header>
-    </div>
-  );
-}
-
-export default App;
+import React, { Component } from "react";
 
 class Counter extends Component {
   state = {
     count: 0
   };
-  handleClick = () => {
+  
+  handleIncrement = () => {
     this.setState((prevState, { count }) => ({
       count: prevState.count + 1
     }));
   };
+  
+  handleDecrement = () => {
+    this.setState((prevState, { count }) => ({
+      count: prevState.count - 1
+    }));
+  };
+  
   render() {
-    return <button onClick={this.handleClick}>{this.state.count}</button>;
+    return (
+      <div>
+        <h1>{this.state.count}</h1>
+        <button type="button" onClick={this.handleIncrement}>
+          Increment
+        </button>
+        <button type="button" onClick={this.handleDecrement}>
+          Decrement
+        </button>
+      </div>
+    );
   }
 }
+
+function App() {
+  return (
+    <Counter />
+  );
+}
+
+export default App;
